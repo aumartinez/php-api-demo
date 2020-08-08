@@ -33,10 +33,10 @@ class Api {
       exit();
     }
     
-    $user = $_SERVER["PHP_AUTH_USER"];
-    $pass = $_SERVER["PHP_AUTH_PW"];
+    $this->user = $_SERVER["PHP_AUTH_USER"];
+    $this->pass = $_SERVER["PHP_AUTH_PW"];
     
-    $validated = (in_array($user, $valid_users)) && ($pass == $valid[$user]);
+    $validated = (in_array($this->user, $valid_users)) && ($this->pass == $valid[$user]);
 
     if (!$validated) {
       http_response_code(400);
