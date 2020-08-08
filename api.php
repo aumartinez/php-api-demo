@@ -78,11 +78,7 @@ class Api {
     $str = htmlspecialchars($str);
     
     return $str;
-  }
-  
-  public function auth($token) {
-    
-  }
+  }  
 }
 
 $api = new Api();
