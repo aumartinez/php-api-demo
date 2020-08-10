@@ -6,51 +6,32 @@ class Api {
   
   private $user;
   private $pass;
+  private $token;
     
   public function __construct() {
     header ("Access-Control-Allow-Origin: *");
     header ("Content-Type: application/json; charset=UTF-8");
-    header ("Access-Control-Allow-Methods: GET");
+    header ("Access-Control-Allow-Methods: POST, GET, OPTIONS");
     header ("Access-Control-Max-Age: 3600");
-    header ("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+    header ("Access-Control-Allow-Headers: If-Modified-Since,Cache-Control, Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
     
-    $valid = array(
-     "guest" => "mypass",
-    );
+    $this->token = "Z3Vlc3Q6bXlwYXNz";
     
-    $valid_users = array_keys($valid);
-    
-    if (!isset($_SERVER["PHP_AUTH_PW"]) || !isset($_SERVER["PHP_AUTH_PW"])) {
-      http_response_code(400);
-      header ("WWW-Authenticate: Basic realm=\"My Realm\"");
+    $headers = apache_request_headers();
+    $get_token = isset($headers["API-Key"]) ? $headers["API-Key"] : null;
+                       
+    if (!isset($get_token) || $this->token !== $get_token) {
+      http_response_code(400);      
       header ("HTTP/1.0 401 Unauthorized");
       
       $mess = array(
-        "message" => "Not authorized call",
+        "message" => "Token not received",
       );
       
       echo json_encode($mess);      
       exit();
     }
-    
-    $this->user = $_SERVER["PHP_AUTH_USER"];
-    $this->pass = $_SERVER["PHP_AUTH_PW"];
-    
-    $validated = (in_array($this->user, $valid_users)) && ($this->pass == $valid[$user]);
-
-    if (!$validated) {
-      http_response_code(400);
-      header ("WWW-Authenticate: Basic realm=\"My Realm\"");
-      header ("HTTP/1.0 401 Unauthorized");
-      
-      $mess = array(
-        "message" => "Not authorized call",
-      );
-      
-      echo json_encode($mess);      
-      exit();
-    }
-        
+            
     $country = isset($_GET["country"]) ? $_GET["country"] : null;    
     $country = $this->sanitize_str($country);
         
