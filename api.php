@@ -32,7 +32,7 @@ class Api {
       exit();
     }
             
-    $query = isset($_SERVER["QUERY_STRING"]) ? $_SERVER["QUERY_STRING"] : null;    
+    $query = isset($_SERVER["QUERY_STRING"]) ? $_SERVER["QUERY_STRING"] : null;
     $query = $this->sanitize_str($query);
         
     $data = new getJSON($query);
