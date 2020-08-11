@@ -45,7 +45,7 @@ class getJSON {
     if ($this->error) {
       return "cURL Error #:" . $this->error;
     } else {
-      echo $this->response;
+      return $this->response;
     }
   }
   
