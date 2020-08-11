@@ -5,22 +5,22 @@ class getJSON {
   public $response;
   public $error;
   
-  public function __construct($country = null) {
-    if ($country == null || trim($country) == "") {
-      $country = "";
+  public function __construct($query = null) {
+    if ($query == null || trim($query) == "") {
+      $query = "";
     }
     else {
-      $country = "?country=" . $country;      
-      return $this->api_call($country);
+      $query = "?" . $query;      
+      return $this->api_call($query);
     }
     
-    return $this->api_call($country);
+    return $this->api_call($query);
   }
   
-  protected function api_call($country = "") {
+  protected function api_call($query = "") {
     $this->curl = curl_init();
     
-    $url = "https://covid-193.p.rapidapi.com/statistics" . $country;
+    $url = "https://covid-193.p.rapidapi.com/statistics" . $query;
         
     curl_setopt_array($this->curl, array(
       CURLOPT_URL => $url,
