@@ -32,10 +32,10 @@ class Api {
       exit();
     }
             
-    $country = isset($_GET["country"]) ? $_GET["country"] : null;    
-    $country = $this->sanitize_str($country);
+    $query = isset($_SERVER["QUERY_STRING"]) ? $_SERVER["QUERY_STRING"] : null;    
+    $query = $this->sanitize_str($query);
         
-    $data = new getJSON($country);
+    $data = new getJSON($query);
 
     if ($data->error) {
       http_response_code(400);
@@ -49,7 +49,7 @@ class Api {
     else {
       http_response_code(201);
         
-      echo json_encode($data->response);
+      echo $data->response;
     }    
   }
   
