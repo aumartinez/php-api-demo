@@ -16,3 +16,11 @@ Testing with Postman got successfull responses and were able to retrieve correct
 Preview message from reqbin online testing
 
 ![screenshot](https://github.com/aumartinez/php-api-demo/blob/master/curl.PNG)
+
+Trying to get data without the token will get the response:
+
+```json
+{
+    "message": "Token not received"
+}
+```
