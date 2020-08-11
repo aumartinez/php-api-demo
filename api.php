@@ -13,7 +13,7 @@ class Api {
     header ("Content-Type: application/json; charset=UTF-8");
     header ("Access-Control-Allow-Methods: POST, GET, OPTIONS");
     header ("Access-Control-Max-Age: 3600");
-    header ("Access-Control-Allow-Headers: If-Modified-Since,Cache-Control, Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+    header ("Access-Control-Allow-Headers: If-Modified-Since, Cache-Control, Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
     
     $this->token = "Z3Vlc3Q6bXlwYXNz";
     
@@ -49,7 +49,7 @@ class Api {
     else {
       http_response_code(201);
         
-      echo ($data->response);
+      echo json_encode($data->response);
     }    
   }
   
