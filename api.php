@@ -4,8 +4,6 @@ require_once ("getjson.php");
 
 class Api {
   
-  private $user;
-  private $pass;
   private $token;
     
   public function __construct() {
