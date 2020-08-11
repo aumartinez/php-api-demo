@@ -17,6 +17,8 @@ Preview message from reqbin online testing
 
 ![screenshot](https://github.com/aumartinez/php-api-demo/blob/master/curl.PNG)
 
+The above token is not the API-Key from the rapid-api account, is just a validation to ensure the endpoint is accessed only by authorized users.
+
 Trying to get data without the token will get the response:
 
 ```json
