@@ -12,3 +12,7 @@ Uploaded php files to a cloud service at:
 http://accedo-gps.000webhostapp.com/demo/php-api-demo/api.php
 
 Testing with Postman got successfull responses and were able to retrieve correctly all the server payload.
+
+Preview message from reqbin online testing
+
+![screenshot](https://github.com/aumartinez/php-api-demo/blob/master/curl.PNG)
